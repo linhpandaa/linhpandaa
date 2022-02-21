@@ -2,24 +2,28 @@
 #include <iostream>
 using namespace std;
 
-// convert inch to centimetre
-double inch2cm(double x)
+// convert inchtocentimetre
+double inch_to_cm(double x)
 {
     return x * 2.54;
 }
 
 // calculate area of rectangle
-double area(double a, double b)
+double area(double width, double height)
 {
-    return a * b;
+    return width * height;
 }
 
 int main()
 {
     // 1. convert inch to cm
-    cout << "5 inch(s) to cm is " << inch2cm(5) << endl;
+    double value = 15.6;
+    cout << value << " inch(s) to cm is " << inch_to_cm(value) << endl;
 
     // area of rectangle
-    cout << "Area of rectangle with 2 sides 4 and 5 is " << area(4, 5) << endl;
+    double width = 4;
+    double height = 5;
+    cout << "Area of rectangle with 2 sides " << width << " and " << height << " is " << area(width, height) << endl;
+    
     return 0;
 }
