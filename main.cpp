@@ -5,9 +5,12 @@ using namespace chess;
 
 int main()
 {
-    posion b = {.column=5, .row=5};
-    // posion e = move_1_left_2_up(b);
-    // cout << e.column << " " << e.row << endl;
-    cout << in_scope(b) << endl;
+    posion begin;
+    cout << "Input beginning posion (column, row): ";
+    cin >> begin.column >> begin.row;
+    if (in_scope(begin))
+        show_moves(begin);
+    else
+        cout << "Error: Invalid input posion.\n";
     return 0;
 }
