@@ -14,20 +14,26 @@ int main()
     }
 
     int a[n];
-    cout << "Input array: ";
+    cout << "Input array:\n";
     for (int i = 0; i < n; i++)
         cin >> a[i];
 
-    int min = a[0], max = a[0];
+    int imin = 0, imax = 0;
     for (int i = 1; i < n; i++)
     {
-        if (a[i] < min)
-            min = a[i];
-        else if (a[i] > max)
-            max = a[i];
+        if (a[i] > a[imax])
+            imax = i;
+        else if (a[i] < a[imin])
+            imin = i;
     }
 
-    cout << "Min: " << min << endl;
-    cout << "Max: " << max << endl;
+    int c = a[imin];
+    a[imin] = a[imax];
+    a[imax] = c; 
+
+    cout << "Array after rearrangement:\n";
+    for (int i = 0; i < n; i++)
+        cout << a[i] << " ";
+    cout << endl;
     return 0;
 }
