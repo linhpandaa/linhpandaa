@@ -1,13 +1,21 @@
 #include <iostream>
-#include <vector>
+#include <sstream>
 using namespace std;
 
-int main() 
+int main()
 {
-    string line;
-    getline(cin, line);
-    cout << line;
+    string t;
+    getline(cin, t);
 
-    
+    istringstream iss(t);
+    string word;
+    string ta;
+    while (iss >> word) 
+    {
+        ta += word + " ";
+        if (word[0] == 'A')
+            ta += word + " ";
+    }
+    cout << ta << endl;
     return 0;
 }
