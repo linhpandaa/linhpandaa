@@ -19,11 +19,16 @@ using namespace std;
 string LOGIN = "linh";
 string PASSW = "123456";
 
-bool submit(const string login) {
-    // ask max 3 times password
-    cout << "Password: ";
-    string pwd; cin >> pwd;
-    return PASSW.compare(pwd) == 0;
+void submit(const string login) {
+    int times = 3;
+    string pwd;
+    while (times--) {
+        cout << "Password: ";
+        cin >> pwd;
+        if (PASSW.compare(pwd) == 0)
+            throw true;
+    }
+    throw false;
 }
 
 int main() {
@@ -34,13 +39,11 @@ int main() {
     } while (LOGIN.compare(login) != 0);
         
     try {
-        bool e = submit(login) || submit(login) || submit(login);
-        if (e)
-            cout << "Login successfully" << endl;
-        else
-            throw e;
+       submit(login); 
     } catch (bool e) {
-        if (!e)
+        if (e)
+            cout << "Login successful" << endl;
+        else
             cout << "Login failed" << endl;
     }
     return 0;
