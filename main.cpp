@@ -47,8 +47,9 @@ int main()
                 out << lst[i] << " [" <<  x[i] << "]" << endl;
             }
         }
+        out.close();
     }
-
+    in.close();
 
     return 0;
 }
