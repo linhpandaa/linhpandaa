@@ -2,7 +2,9 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <map>
 using namespace std;
+// g++ main.cpp -std=c++20
 
 int main()
 {
@@ -22,33 +24,26 @@ int main()
                 dstu.push_back(tu);
             }
         }
-        vector<string> lst;
-        vector<int> x;
+        map<string, int> ds;
         for (string tu: dstu) {
-            if (lst.size() == 0) {
-                lst.push_back(tu);
-                x.push_back(1);
+            if (ds.size() == 0) {
+                ds.insert({tu, 1});
             }
-            else {
-                auto i = find (lst.begin(), lst.end(), tu);
-                if (i == lst.end() ) {                 //new word
-                    lst.push_back(tu);
-                    x.push_back(1);
-                } 
-                else {
-                    x[i-lst.begin()] ++;
-                }                
-            
+            else {               
+                if (ds.contains(tu)) {
+                    ds[tu]++;
+                } else {
+                    ds.insert({tu, 1});
+                }
             }
         }
         ofstream out("linh.txt");
-        for (int i = 0; i < lst.size(); i++) {
-            if (x[i] > 1) {  
-                out << lst[i] << " [" <<  x[i] << "]" << endl;
+        for (const auto& [tu, soluong]: ds) {
+            if (soluong > 1) {
+                out << tu << " [" <<  soluong << "]" << endl;
             }
         }
     }
-
 
     return 0;
 }
