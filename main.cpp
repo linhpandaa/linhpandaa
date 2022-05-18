@@ -43,7 +43,9 @@ int main()
                 out << tu << " [" <<  soluong << "]" << endl;
             }
         }
+        out.close();
     }
+    in.close();
 
     return 0;
 }
